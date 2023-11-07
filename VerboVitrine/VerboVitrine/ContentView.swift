@@ -8,17 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var mensagem: String = ""
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Form {
+                Section("Escreva algo:") {
+                    TextField("mensagem para o chatgpt", text: $mensagem)
+                }
+                
+                
+            }
+            
+            VStack {
+                Spacer()
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(height: 50)
+                            .padding()
+                        Text("Gerar")
+                            .foregroundStyle(.white)
+                    }
+                }
+                
+                Text("Texto chatgpteco")
+                Spacer()
+            }
         }
-        .padding()
+        
+        
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(mensagem: "")
 }
