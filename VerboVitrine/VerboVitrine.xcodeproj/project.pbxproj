@@ -11,6 +11,7 @@
 		5A468BAB2AFA76B700B53B25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468BAA2AFA76B700B53B25 /* ContentView.swift */; };
 		5A468BAD2AFA76B800B53B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A468BAC2AFA76B800B53B25 /* Assets.xcassets */; };
 		5A468BB02AFA76B800B53B25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A468BAF2AFA76B800B53B25 /* Preview Assets.xcassets */; };
+		5A726FB42AFE5ECF00984AB1 /* InfosPeca.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A726FB32AFE5ECE00984AB1 /* InfosPeca.swift */; };
 		5A7B3C092AFBCD460035B037 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B3C082AFBCD460035B037 /* ChatViewModel.swift */; };
 		5A7B3C0C2AFBCDBE0035B037 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B3C0B2AFBCDBE0035B037 /* ChatView.swift */; };
 		5A7B3C0F2AFC01A00035B037 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5A7B3C0E2AFC01A00035B037 /* Alamofire */; };
@@ -25,6 +26,7 @@
 		5A468BAA2AFA76B700B53B25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A468BAC2AFA76B800B53B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A468BAF2AFA76B800B53B25 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A726FB32AFE5ECE00984AB1 /* InfosPeca.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosPeca.swift; sourceTree = "<group>"; };
 		5A7B3C082AFBCD460035B037 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		5A7B3C0B2AFBCDBE0035B037 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		5A7B3C122AFC02370035B037 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				5A7B3C0B2AFBCDBE0035B037 /* ChatView.swift */,
+				5A726FB32AFE5ECE00984AB1 /* InfosPeca.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				5A7B3C132AFC02370035B037 /* OpenAIService.swift in Sources */,
 				5A468BA92AFA76B700B53B25 /* VerboVitrineApp.swift in Sources */,
 				5A7B3C092AFBCD460035B037 /* ChatViewModel.swift in Sources */,
+				5A726FB42AFE5ECF00984AB1 /* InfosPeca.swift in Sources */,
 				5A7B3C152AFC0AA10035B037 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
