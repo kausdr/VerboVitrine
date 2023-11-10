@@ -14,6 +14,5 @@ struct Item {
     let tamanho: String
     let medidas: String
     let avarias: String
-    let hashtags: [String]
-    let createAt: Date
+    let hashtags: String
 }
