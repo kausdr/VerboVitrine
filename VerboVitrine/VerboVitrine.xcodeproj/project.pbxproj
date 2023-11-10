@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A31AE412AFE5E480065C63F /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31AE402AFE5E480065C63F /* ItemStruct.swift */; };
 		5A468BA92AFA76B700B53B25 /* VerboVitrineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468BA82AFA76B700B53B25 /* VerboVitrineApp.swift */; };
 		5A468BAB2AFA76B700B53B25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468BAA2AFA76B700B53B25 /* ContentView.swift */; };
 		5A468BAD2AFA76B800B53B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A468BAC2AFA76B800B53B25 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A31AE402AFE5E480065C63F /* ItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
 		5A468BA52AFA76B700B53B25 /* VerboVitrine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerboVitrine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A468BA82AFA76B700B53B25 /* VerboVitrineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerboVitrineApp.swift; sourceTree = "<group>"; };
 		5A468BAA2AFA76B700B53B25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				5A7B3C082AFBCD460035B037 /* ChatViewModel.swift */,
 				5A7B3C122AFC02370035B037 /* OpenAIService.swift */,
 				5A7B3C142AFC0AA10035B037 /* Constants.swift */,
+				5A31AE402AFE5E480065C63F /* ItemStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				5A7B3C0C2AFBCDBE0035B037 /* ChatView.swift in Sources */,
 				5A468BAB2AFA76B700B53B25 /* ContentView.swift in Sources */,
 				5A7B3C132AFC02370035B037 /* OpenAIService.swift in Sources */,
+				5A31AE412AFE5E480065C63F /* ItemStruct.swift in Sources */,
 				5A468BA92AFA76B700B53B25 /* VerboVitrineApp.swift in Sources */,
 				5A7B3C092AFBCD460035B037 /* ChatViewModel.swift in Sources */,
 				5A726FB42AFE5ECF00984AB1 /* InfosPeca.swift in Sources */,
