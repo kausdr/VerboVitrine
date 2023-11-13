@@ -11,13 +11,13 @@ struct InfosPeca: View {
     @State var nomePeca: String = ""
     @State var preco: Double = 0.0
     @State var tamanho: String = ""
-    @State var medidas: String = "Nenhuma medida"
+    @Binding var medidas: String
     @State var avarias: String = ""
     @State var hashtag: String = ""
     
     @State var showSheetMedidas: Bool = false
     @State var showSheetHashtag: Bool = false
-    @State var showSheetDescBase: Bool = false
+    @State var showSheetDescBase: Bool = false 
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -117,7 +117,7 @@ struct InfosPeca: View {
                 .foregroundStyle(.black)
             }
             
-            Text(medidas)
+            Text(medidas != "" ? medidas : "Nenhuma medida")
                 .foregroundStyle(.gray)
 //                .padding(.horizontal, 16)
             
@@ -213,5 +213,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca()
+    InfosPeca(medidas: .constant(""))
 }
