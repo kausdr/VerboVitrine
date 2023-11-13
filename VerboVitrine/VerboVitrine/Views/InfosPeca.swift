@@ -197,14 +197,17 @@ struct InfosPeca: View {
         .sheet(isPresented: $showSheetMedidas) {
             Text("Medidas")
                 .presentationDetents([.medium])
+                .presentationCornerRadius(40)
         }
         .sheet(isPresented: $showSheetHashtag) {
             Text("Hashtags")
                 .presentationDetents([.medium])
+                .presentationCornerRadius(40)
         }
         .sheet(isPresented: $showSheetDescBase) {
             Text("Descrição Base")
                 .presentationDetents([.medium])
+                .presentationCornerRadius(40)
         }
     }
 }
