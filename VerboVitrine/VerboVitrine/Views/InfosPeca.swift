@@ -11,9 +11,13 @@ struct InfosPeca: View {
     @State var nomePeca: String = ""
     @State var preco: Double = 0.0
     @State var tamanho: String = ""
-    @State var medidas: String = ""
+    @State var medidas: String = "Nenhuma medida"
     @State var avarias: String = ""
     @State var hashtag: String = ""
+    
+    @State var showSheetMedidas: Bool = false
+    @State var showSheetHashtag: Bool = false
+    @State var showSheetDescBase: Bool = false
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -99,29 +103,40 @@ struct InfosPeca: View {
             
             ///
             
-            HStack(spacing: 4) {
-                Image(systemName: "ruler")
-                    .font(.system(size: 14))
-                
-                Text("Medidas")
-                    .font(.body)
-                    .bold()
+            Button {
+                showSheetMedidas.toggle()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "ruler")
+                        .font(.system(size: 14))
+                    
+                    Text("Medidas")
+                        .font(.body)
+                        .bold()
+                }
+                .foregroundStyle(.black)
             }
             
-            TextField("Nenhuma medida", text: $avarias)
+            Text(medidas)
+                .foregroundStyle(.gray)
 //                .padding(.horizontal, 16)
             
             Spacer()
             
             ///
             
-            HStack(spacing: 4) {
-                Image(systemName: "number.circle")
-                    .font(.system(size: 20))
-                
-                Text("Hashtag")
-                    .font(.body)
-                    .bold()
+            Button {
+                showSheetHashtag.toggle()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "number.circle")
+                        .font(.system(size: 20))
+                    
+                    Text("Hashtags")
+                        .font(.body)
+                        .bold()
+                }
+                .foregroundStyle(.black)
             }
             
             Rectangle()
@@ -131,13 +146,18 @@ struct InfosPeca: View {
             ///
             
             
-            HStack(spacing: 4) {
-                Image(systemName: "pencil.circle")
-                    .font(.system(size: 20))
-                
-                Text("Descrição base")
-                    .font(.body)
-                    .bold()
+            Button {
+                showSheetDescBase.toggle()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "pencil.circle")
+                        .font(.system(size: 20))
+                    
+                    Text("Descrição base")
+                        .font(.body)
+                        .bold()
+                }
+                .foregroundStyle(.black)
             }
             
             Rectangle()
@@ -160,19 +180,35 @@ struct InfosPeca: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 14)
-                            .fill(nomePeca == "" ? Color(uiColor: .clear) : .black)
+                            .fill(nomePeca == "" ? Color(uiColor: .clear) : Color("bttnColor"))
                             .strokeBorder(nomePeca == "" ? Color(uiColor: .systemGray) : Color(uiColor: .clear))
                         
                         Text("Gerar")
-                            .foregroundStyle(nomePeca == "" ? Color(uiColor: .systemGray) : .white)
+                            .foregroundStyle(nomePeca == "" ? Color(uiColor: .systemGray) : Color("txtBttnColor"))
                         
                         
                     }
                     .frame(width: 86 ,height: 48)
                 }
+                .disabled(nomePeca == "")
             }
         }
         .padding(24)
+        .sheet(isPresented: $showSheetMedidas) {
+            MedidasView()
+                .presentationDetents([.medium])
+                .presentationCornerRadius(40)
+        }
+        .sheet(isPresented: $showSheetHashtag) {
+            HashtagsView()
+                .presentationDetents([.medium])
+                .presentationCornerRadius(40)
+        }
+        .sheet(isPresented: $showSheetDescBase) {
+            DescBaseView()
+                .presentationDetents([.medium])
+                .presentationCornerRadius(40)
+        }
     }
 }
 
