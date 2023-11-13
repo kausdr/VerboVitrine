@@ -17,7 +17,19 @@ class OpenAIService {
         let header: HTTPHeaders = [
             "Authorization" : "Bearer \(Constants.openAIApiKey)"
         ]
-        return try? await AF.request(endpointUrl, method: .post, parameters:  body, encoder: .json, headers:   header).serializingDecodable(OpenAIChatResponse.self).value
+        do {
+            return try await AF.request(endpointUrl, method: .post, parameters:  body, encoder: .json, headers: header)
+                .response { dataResponse in
+                    if let data = dataResponse.data {
+                        print(String(data: data, encoding: String.Encoding.utf8) ?? "--")
+                    }
+                }
+                .serializingDecodable(OpenAIChatResponse.self).value
+        } catch {
+            print(error)
+            
+            return nil
+        }
     }
 }
 
