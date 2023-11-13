@@ -10,11 +10,24 @@ import SwiftUI
 struct MedidasView: View {
     @Environment(\.dismiss) var dismiss
     
-    @State var minBusto = 0
-    @State var maxBusto = 150
     @State var width: CGFloat = 0
     @State var width1: CGFloat = 10
-    var totalWidth = UIScreen.main.bounds.width - 10
+    //    var totalWidth = UIScreen.main.bounds.width - 10
+    
+    @State var compr: Int = 0
+    @State var ombro: Int = 0
+    @State var comprManga: Int = 0
+    
+    @State var medidas: String = ""
+    
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        formatter.zeroSymbol  = ""
+        return formatter
+    }()
+    
+    @State var naoAlterado: Bool = true
     
     var body: some View {
         VStack {
@@ -37,20 +50,37 @@ struct MedidasView: View {
                 Spacer()
                 
                 Button {
+                    let b = getValue(val: width) != "0" ? "Busto: \(getValue(val: width)) até \(getValue(val: width1))cm," : ""
+                    let c = compr != 0 ? "Comprimento: \(compr)cm," : ""
+                    let o = ombro != 0 ? "Ombro: \(ombro)cm," : ""
+                    let m = comprManga != 0 ? "Comprimento da Manga: \(comprManga)cm" : ""
+                    
+                    medidas = "Medidas: \(b) \(c) \(o) \(m)"
+                    print(medidas)
+                    
                     dismiss()
                 } label: {
                     Label("Done", systemImage: "checkmark")
                         .labelStyle(.iconOnly)
-                        .foregroundStyle(Color("bttnColor"))
+                        .foregroundStyle(naoAlterado ? Color("bttnColor").opacity(0.3) : Color("bttnColor"))
                         .font(.title3)
                 }
+                .disabled(naoAlterado)
                 //                .disabled(newtitle.isEmpty)
             }
             
             ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Busto")
+                        .font(.body)
+                        .bold()
+                    
+                }
+                
                 HStack {
-                    Text("\(width)")
+                    Text("\(getValue(val: width))")
                         .foregroundStyle(Color("bttnColor").opacity(0.5))
+                        .frame(width: 34)
                     
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 4)
@@ -88,23 +118,83 @@ struct MedidasView: View {
                                             if value.location.x >= self.width && value.location.x <= 210 {
                                                 self.width1 = value.location.x
                                             }
-                                        
+                                            
                                         })
                                 )
                         }
                         
                     }
                     
-                    Text("\(width1)")
+                    Text("\(getValue(val: width1))")
                         .foregroundStyle(Color("bttnColor").opacity(0.5))
+                        .frame(width: 34)
                 }
+                
+                ///
+                
+                VStack(alignment: .leading) {
+                    Text("Comprimento")
+                        .font(.body)
+                        .bold()
+                    
+                    TextField("Insira", value: $compr, formatter: numberFormatter)
+                        .keyboardType(.numbersAndPunctuation)
+                        .padding(.horizontal, 16)
+                    
+                    Rectangle()
+                        .fill(Color(.systemGray))
+                        .frame(height: 0.5)
+                        .padding(.horizontal, 16)
+                }
+                
+                ///
+                
+                VStack(alignment: .leading) {
+                    Text("Ombro")
+                        .font(.body)
+                        .bold()
+                    
+                    TextField("Insira", value: $ombro, formatter: numberFormatter)
+                        .keyboardType(.numbersAndPunctuation)
+                        .padding(.horizontal, 16)
+                    
+                    Rectangle()
+                        .fill(Color(.systemGray))
+                        .frame(height: 0.5)
+                        .padding(.horizontal, 16)
+                    
+                }
+                
+                ///
+                
+                VStack(alignment: .leading) {
+                    Text("Comprimento da Manga")
+                        .font(.body)
+                        .bold()
+                    
+                    TextField("Insira", value: $comprManga, formatter: numberFormatter)
+                        .keyboardType(.numbersAndPunctuation)
+                        .padding(.horizontal, 16)
+                    
+                    Rectangle()
+                        .fill(Color(.systemGray))
+                        .frame(height: 0.5)
+                        .padding(.horizontal, 16)
+                    
+                }
+                
+                ///
+                
             }
-        
-            
-            
+            .onTapGesture {
+                naoAlterado = false
+            }
         }
-        
         .padding(32)
+    }
+    
+    func getValue(val: CGFloat) -> String {
+        return String(format: "%.0f", val)
     }
     
 }
