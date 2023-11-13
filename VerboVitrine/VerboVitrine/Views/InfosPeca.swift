@@ -195,17 +195,17 @@ struct InfosPeca: View {
         }
         .padding(24)
         .sheet(isPresented: $showSheetMedidas) {
-            Text("Medidas")
+            MedidasView()
                 .presentationDetents([.medium])
                 .presentationCornerRadius(40)
         }
         .sheet(isPresented: $showSheetHashtag) {
-            Text("Hashtags")
+            HashtagsView()
                 .presentationDetents([.medium])
                 .presentationCornerRadius(40)
         }
         .sheet(isPresented: $showSheetDescBase) {
-            Text("Descrição Base")
+            DescBaseView()
                 .presentationDetents([.medium])
                 .presentationCornerRadius(40)
         }
