@@ -104,7 +104,7 @@ struct InfosPeca: View {
             ///
             
             Button {
-                
+                showSheetMedidas.toggle()
             } label: {
                 HStack(spacing: 4) {
                     Image(systemName: "ruler")
@@ -125,13 +125,18 @@ struct InfosPeca: View {
             
             ///
             
-            HStack(spacing: 4) {
-                Image(systemName: "number.circle")
-                    .font(.system(size: 20))
-                
-                Text("Hashtag")
-                    .font(.body)
-                    .bold()
+            Button {
+                showSheetHashtag.toggle()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "number.circle")
+                        .font(.system(size: 20))
+                    
+                    Text("Hashtags")
+                        .font(.body)
+                        .bold()
+                }
+                .foregroundStyle(.black)
             }
             
             Rectangle()
@@ -141,13 +146,18 @@ struct InfosPeca: View {
             ///
             
             
-            HStack(spacing: 4) {
-                Image(systemName: "pencil.circle")
-                    .font(.system(size: 20))
-                
-                Text("Descrição base")
-                    .font(.body)
-                    .bold()
+            Button {
+                showSheetDescBase.toggle()
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "pencil.circle")
+                        .font(.system(size: 20))
+                    
+                    Text("Descrição base")
+                        .font(.body)
+                        .bold()
+                }
+                .foregroundStyle(.black)
             }
             
             Rectangle()
@@ -186,6 +196,14 @@ struct InfosPeca: View {
         .padding(24)
         .sheet(isPresented: $showSheetMedidas) {
             Text("Medidas")
+                .presentationDetents([.medium])
+        }
+        .sheet(isPresented: $showSheetHashtag) {
+            Text("Hashtags")
+                .presentationDetents([.medium])
+        }
+        .sheet(isPresented: $showSheetDescBase) {
+            Text("Descrição Base")
                 .presentationDetents([.medium])
         }
     }
