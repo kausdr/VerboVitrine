@@ -18,7 +18,7 @@ struct MedidasView: View {
     @State var ombro: Int = 0
     @State var comprManga: Int = 0
     
-    @State var medidas: String = ""
+    @Binding var medidas: String
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -200,5 +200,5 @@ struct MedidasView: View {
 }
 
 #Preview {
-    MedidasView()
+    MedidasView(medidas: .constant(""))
 }
