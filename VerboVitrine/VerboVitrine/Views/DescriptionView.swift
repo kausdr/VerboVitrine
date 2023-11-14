@@ -10,6 +10,7 @@ import SwiftUI
 struct DescriptionView: View {
     
     @State var nomePeca: String = ""
+    private let pastboard = UIPasteboard.general
     
     var body: some View {
         
@@ -21,7 +22,7 @@ struct DescriptionView: View {
             Spacer()
             
             Button{
-                
+                pastboard.string = "This Text Copied to Clipboard"
             } label: {
                 
                 Image(systemName: "doc.on.doc")
