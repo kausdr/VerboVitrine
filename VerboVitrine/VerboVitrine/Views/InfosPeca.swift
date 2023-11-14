@@ -11,7 +11,7 @@ struct InfosPeca: View {
     @State var nomePeca: String = ""
     @State var preco: Double = 0.0
     @State var tamanho: String = ""
-    @Binding var medidas: String
+    @State var medidas: String = ""
     @State var avarias: String = ""
     @State var hashtag: String = ""
     
@@ -119,6 +119,9 @@ struct InfosPeca: View {
             
             Text(medidas != "" ? medidas : "Nenhuma medida")
                 .foregroundStyle(.gray)
+                .onChange(of: medidas) { oldValue, newValue in
+                    print("medida - old: \(oldValue) - new: \(newValue)")
+                }
 //                .padding(.horizontal, 16)
             
             Spacer()
@@ -195,7 +198,7 @@ struct InfosPeca: View {
         }
         .padding(24)
         .sheet(isPresented: $showSheetMedidas) {
-            MedidasView()
+            MedidasView(medidas: $medidas)
                 .presentationDetents([.medium])
                 .presentationCornerRadius(40)
         }
@@ -213,5 +216,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca(medidas: .constant(""))
+    InfosPeca()
 }
