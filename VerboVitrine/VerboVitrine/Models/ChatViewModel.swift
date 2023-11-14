@@ -8,31 +8,26 @@
 import SwiftUI
 import Foundation
 
-extension ChatView {
-    class ViewModel: ObservableObject {
-        @Published var messages: [Message] = []
+class ViewModel: ObservableObject {
+    @Published var messages: [Message] = []
+    
+    private let openAIService = OpenAIService()
+    
+    func sendMessage(item: Item) {
+        let newMessage = Message(id: UUID(), role: .user, content: item.buildRequestText(), createAt: Date())
+        messages.append(newMessage)
         
-        @Published var currentInput: String = ""
-        
-        private let openAIService = OpenAIService()
-        
-        func sendMessage() {
-            let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
-            messages.append(newMessage)
-            currentInput = ""
+        Task {
+            let response = await openAIService.sendMessage(messages: messages)
+            print(response ?? "Response Nil")
+            guard let receivedOpenAIMessage = response?.choices.first?.message else {
+                print("deu ruim, pai")
+                return
+            }
             
-            Task {
-                let response = await openAIService.sendMessage(messages: messages)
-                print(response ?? "Response Nil")
-                guard let receivedOpenAIMessage = response?.choices.first?.message else {
-                    print("deu ruim, pai")
-                    return
-                }
-                
-                let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage  .role, content: receivedOpenAIMessage.content, createAt: Date())
-                await MainActor.run{
-                    messages.append(receivedMessage)
-                }
+            let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage  .role, content: receivedOpenAIMessage.content, createAt: Date())
+            await MainActor.run{
+                messages.append(receivedMessage)
             }
         }
     }

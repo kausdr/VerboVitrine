@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct InfosPeca: View {
+    @ObservedObject var viewModel = ViewModel()
+    
+    
     @State var nomePeca: String = ""
+    @State var descricao: String = ""
     @State var preco: Double = 0.0
     @State var tamanho: String = ""
     @State var medidas: String = ""
     @State var avarias: String = ""
     @State var hashtag: String = ""
+    
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -154,9 +159,22 @@ struct InfosPeca: View {
                 Spacer()
                 
                 Button {
-                    let itemStruct = Item(id: UUID(), peca: nomePeca, preco: preco, tamanho: tamanho, medidas: medidas, avarias: avarias, hashtags: hashtag)
+                    var itemStruct = Item(id: UUID(), peca: "", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
+                    
+                    itemStruct.peca = nomePeca
+                    itemStruct.descricao = descricao
+                    itemStruct.preco = preco
+                    itemStruct.tamanho = tamanho
+                    itemStruct.medidas = medidas
+                    itemStruct.avarias = avarias
+                    itemStruct.hashtags = hashtag
+                   
                     
                     print(itemStruct)
+                    
+                    
+                    
+                    viewModel.sendMessage(item: itemStruct)
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 14)
@@ -174,6 +192,15 @@ struct InfosPeca: View {
         }
         .padding(24)
     }
+    
+    func messageView(message: Message) -> some View {
+            HStack {
+                if message.role == .user {Spacer()}
+                Text(message.content)
+                if message.role == .assistant {Spacer()}
+            }
+    
+        }
 }
 
 #Preview {
