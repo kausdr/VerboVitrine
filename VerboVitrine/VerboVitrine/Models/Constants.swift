@@ -11,5 +11,5 @@ enum Constants {
 //    static let openAIApiKey = "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" // ERRADA
 //    static let openAIApiKey = "sk-OdbsIUepgH0bitcowryhT3BlbkFJpCvlpPPPFhJIHStDpUv5p" //tirar o " --x " para a chave funcionar
     
-    static let openAIApiKey = "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"
+    static let openAIApiKey = "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--x"
 }

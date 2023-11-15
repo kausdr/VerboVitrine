@@ -11,17 +11,17 @@ struct InfosPeca: View {
     @ObservedObject var viewModel = ViewModel()
     
     
-    @State var nomePeca: String = ""
-    @State var descricao: String = ""
-    @State var preco: Double = 0.0
-    @State var tamanho: String = ""
-    @State var medidas: String = ""
-    @State var avarias: String = ""
-    @State var hashtag: String = ""
+    @Binding var nomePeca: String
+    @Binding var descricao: String
+    @Binding var preco: Double
+    @Binding var tamanho: String
+    @Binding var medidas: String
+    @Binding var avarias: String
+    @Binding var hashtag: String
     
     @State var showSheetMedidas: Bool = false
     @State var showSheetHashtag: Bool = false
-    @State var showSheetDescBase: Bool = false 
+    @State var showSheetDescBase: Bool = false
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -182,7 +182,7 @@ struct InfosPeca: View {
                     Spacer()
                     
                     NavigationLink {
-                        DescriptionView()
+                        DescriptionView(nomePeca: $nomePeca, descricao: $descricao, preco: $preco, tamanho: $tamanho, medidas: $medidas, avarias: $avarias, hashtag: $hashtag)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 14)
@@ -195,24 +195,6 @@ struct InfosPeca: View {
                             
                         }
                         .frame(width: 86 ,height: 48)
-                    }
-                    .onTapGesture {
-                                            var itemStruct = Item(id: UUID(), peca: "", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
-                        
-                                            itemStruct.peca = nomePeca
-                                            itemStruct.descricao = descricao
-                                            itemStruct.preco = preco
-                                            itemStruct.tamanho = tamanho
-                                            itemStruct.medidas = medidas
-                                            itemStruct.avarias = avarias
-                                            itemStruct.hashtags = hashtag
-                        
-                        
-                                            print(itemStruct)
-                        
-                        
-                        
-                                            viewModel.sendMessage(item: itemStruct)
                     }
                     .disabled(nomePeca == "")
                     
@@ -239,5 +221,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca()
+    InfosPeca(nomePeca: .constant("cu"), descricao: .constant("um cu esse aqui"), preco: .constant(0.0), tamanho: .constant("redondo"), medidas: .constant("cu/cu"), avarias: .constant("nenhuma"), hashtag: .constant("#cu"))
 }
