@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DescriptionView: View {
+    @ObservedObject var viewModel = ViewModel()
     
     @State var nomePeca: String = ""
     
@@ -33,12 +34,21 @@ struct DescriptionView: View {
             .cornerRadius(14)
             .padding()
         }
+        .onAppear {
+            var itemStruct = Item(id: UUID(), peca: "pega aqui", descricao: "no meu", preco: 0.0, tamanho: "oi", medidas: "tchau", avarias: "blabla", hashtags: "")
+            viewModel.sendMessage(item: itemStruct)
+            print(viewModel.messages)
+        }
         
         Divider()
         VStack{
+//            ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+//                messageView(message: message)
             
-            
-            Text("**@brecho** Suéter Coreano estampado cinza claro com detalhes em bordô Peça em acrílico, macio ao toque e em perfeito estado! Tamanho M por R$65,00 \n\nMedidas: busto: 120-140 cm \ncomprimento: 65 cm \nombro: 52 cm \nmanga: 64 cm \n\n✰Primeira pessoa a comentar quero ou mandar mensagem leva a peça.  \n\n✰Pagamentos via pix, crédito ou débito (acréscimo de taxa da maquininha para as opções no cartão) \n\n✰Envios para todo o Brasil. \n\nChama no inbox para mais informações!#brecho #brechoonline #brechovirtual #brechopr #brechocuritiba")
+            ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+                messageView(message: message)
+            }
+//            Text("**@brecho** Suéter Coreano estampado cinza claro com detalhes em bordô Peça em acrílico, macio ao toque e em perfeito estado! Tamanho M por R$65,00 \n\nMedidas: busto: 120-140 cm \ncomprimento: 65 cm \nombro: 52 cm \nmanga: 64 cm \n\n✰Primeira pessoa a comentar quero ou mandar mensagem leva a peça.  \n\n✰Pagamentos via pix, crédito ou débito (acréscimo de taxa da maquininha para as opções no cartão) \n\n✰Envios para todo o Brasil. \n\nChama no inbox para mais informações!#brecho #brechoonline #brechovirtual #brechopr #brechocuritiba")
                 .font(.callout)
                 .padding()
                 .overlay(
@@ -80,6 +90,24 @@ struct DescriptionView: View {
             }
         }
     }
+    
+//    func messageView(message: Message) -> some View {
+//        HStack {
+//            if message.role == .user {Spacer()}
+//            Text(message.content)
+//            if message.role == .assistant {Spacer()}
+//        }
+//        
+//    }
+    
+    func messageView(message: Message) -> some View {
+        HStack {
+            Text(message.content)
+        }
+        
+    }
+    
+    
 }
 
 #Preview {

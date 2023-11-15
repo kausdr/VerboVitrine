@@ -15,7 +15,7 @@ class ViewModel: ObservableObject {
     
     func sendMessage(item: Item) {
         let newMessage = Message(id: UUID(), role: .user, content: item.buildRequestText(), createAt: Date())
-        messages.append(newMessage)
+//        messages.append(newMessage)
         
         Task {
             let response = await openAIService.sendMessage(messages: messages)
