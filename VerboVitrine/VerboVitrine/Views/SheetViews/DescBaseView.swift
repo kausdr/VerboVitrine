@@ -9,6 +9,10 @@ import SwiftUI
 
 struct DescBaseView: View {
     @Environment(\.dismiss) var dismiss
+    
+    @Binding var descricao: String
+    
+    
     var body: some View {
         VStack {
             HStack {
@@ -27,6 +31,7 @@ struct DescBaseView: View {
                     .font(.title)
                     .bold()
                 
+                
                 Spacer()
                 
                 Button {
@@ -42,7 +47,14 @@ struct DescBaseView: View {
             .padding(32)
             
             ScrollView {
-                Spacer()
+                TextField("Insira a descrição da sua peça", text: $descricao, axis: .vertical)
+                    .font(.callout)
+                    .padding()
+                
+                Rectangle()
+                    .fill(Color(.systemGray))
+                    .frame(height: 0.5)
+                    .padding()
             }
             
             
@@ -52,5 +64,5 @@ struct DescBaseView: View {
 }
 
 #Preview {
-    DescBaseView()
+    DescBaseView(descricao: .constant("uma peça vermelha com bolinhas claras azuis"))
 }
