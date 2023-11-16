@@ -11,14 +11,15 @@ struct InfosPeca: View {
     @ObservedObject var viewModel = ViewModel()
     
     
-    @Binding var nomePeca: String
-    @Binding var descricao: String
-    @Binding var preco: Double
-    @Binding var tamanho: String
-    @Binding var medidas: String
-    @Binding var avarias: String
-    @Binding var hashtag: String
+    @State var nomePeca: String = ""
+    @State var descricao: String = ""
+    @State var preco: Double = 0.0
+    @State var tamanho: String = ""
+    @State var medidas: String = ""
+    @State var avarias: String = ""
+    @State var hashtag: String = ""
     
+    @State var clearFields: Bool = false
     @State var showSheetMedidas: Bool = false
     @State var showSheetHashtag: Bool = false
     @State var showSheetDescBase: Bool = false
@@ -172,13 +173,13 @@ struct InfosPeca: View {
                 
                 HStack {
                     Button {
-                    nomePeca = ""
-                    descricao = ""
-                    preco = 0.0
-                    tamanho = ""
-                    medidas = ""
-                    avarias = ""
-                    hashtag = ""
+                        nomePeca = ""
+                        descricao = ""
+                        preco = 0.0
+                        tamanho = ""
+                        medidas = ""
+                        avarias = ""
+                        hashtag = ""
                     } label: {
                         Image(systemName: "trash")
                             .bold()
@@ -227,5 +228,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca(nomePeca: .constant(""), descricao: .constant(""), preco: .constant(0.0), tamanho: .constant(""), medidas: .constant(""), avarias: .constant(""), hashtag: .constant(""))
+    InfosPeca()
 }

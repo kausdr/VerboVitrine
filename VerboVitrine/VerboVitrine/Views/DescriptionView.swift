@@ -117,7 +117,7 @@ struct DescriptionView: View {
             
             
             NavigationLink {
-                InfosPeca(nomePeca: $nomePeca, descricao: $descricao, preco: $preco, tamanho: $tamanho, medidas: $medidas, avarias: $avarias, hashtag: $hashtag)
+                InfosPeca()
             } label: {
                 HStack {
                     Image(systemName: "plus")
