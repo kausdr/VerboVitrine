@@ -55,7 +55,6 @@ struct DescriptionView: View {
             print(itemStruct)
             
             
-            
             viewModel.sendMessage(item: itemStruct)
         }
         
@@ -63,7 +62,7 @@ struct DescriptionView: View {
         VStack{
                 ScrollView (.horizontal) {
                     HStack {
-                        ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+                        ForEach(viewModel.messages.filter({$0.role != .system}).suffix(1), id: \.id) { message in
                             if message.role == .assistant {
                                 VStack {
                                     ScrollView{

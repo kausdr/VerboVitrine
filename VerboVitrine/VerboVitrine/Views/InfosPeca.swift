@@ -124,9 +124,6 @@ struct InfosPeca: View {
                 
                 Text(medidas != "" ? medidas : "Nenhuma medida")
                     .foregroundStyle(.gray)
-                    .onChange(of: medidas) { oldValue, newValue in
-                        print("medida - old: \(oldValue) - new: \(newValue)")
-                    }
                 //                .padding(.horizontal, 16)
                 
                 Spacer()

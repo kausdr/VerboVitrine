@@ -83,7 +83,9 @@ Peça:  \(peca ?? "")
     \(tamanho == "" ? "" : "Tamanho: \(tamanho ?? "")")
  \(preco == 0.0 ? "" : "Informe o valor ao leitor: \(preco!)")
 
-    \(medidas == "" ? "" : "Medidas: \(medidas ?? "")")
+    \(medidas == "" ? "" : "\(medidas ?? "")")
+
+    \(avarias == "" ? "" : "Informe as seguintes avarias ao leitor: \(avarias ?? "")")
  Chat GPT, peça para o leitor comentar "quero” no fim da legenda
 
 Diga para o leitor que esses são os métodos de pagamento: pix, crédito, débito (acréscimo de taxa da maquininha para as opções no cartão)
