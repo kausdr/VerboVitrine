@@ -33,7 +33,7 @@ struct InfosPeca: View {
     var body: some View {
         NavigationView{
             ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
+                VStack(alignment: .leading, spacing: 20) {
                     
                     ///
                     
@@ -127,7 +127,8 @@ struct InfosPeca: View {
                         .foregroundStyle(.gray)
                     
                     Spacer()
-                    
+                    .frame(height: 20)
+
                     ///
                     
                     Button {
@@ -164,6 +165,7 @@ struct InfosPeca: View {
                         }
                         .foregroundStyle(Color("bttnColor"))
                     }
+                    .padding(.bottom, 6)
                     
                     Rectangle()
                         .fill(Color(.systemGray))
@@ -204,6 +206,7 @@ struct InfosPeca: View {
                             .frame(width: 86 ,height: 48)
                         }
                         .disabled(nomePeca == "")
+                        .padding(.bottom, 6)
                         
                     }
                 }
