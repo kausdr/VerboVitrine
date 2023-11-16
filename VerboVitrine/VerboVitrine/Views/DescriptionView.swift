@@ -117,8 +117,8 @@ struct DescriptionView: View {
             Divider()
             
             
-            Button {
-                
+            NavigationLink {
+                InfosPeca(nomePeca: $nomePeca, descricao: $descricao, preco: $preco, tamanho: $tamanho, medidas: $medidas, avarias: $avarias, hashtag: $hashtag)
             } label: {
                 HStack {
                     Image(systemName: "plus")

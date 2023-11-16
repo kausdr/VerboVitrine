@@ -222,7 +222,7 @@ struct InfosPeca: View {
                     .presentationDetents([.medium])
                     .presentationCornerRadius(40)
             }
-        }
+        }.navigationBarBackButtonHidden()
     }
 }
 
