@@ -37,7 +37,6 @@ struct HashtagsView: View {
                         .foregroundStyle(Color("bttnColor"))
                         .font(.headline)
                 }
-//                .disabled(newtitle.isEmpty)
             }
             .padding(32)
             

@@ -12,7 +12,6 @@ struct MedidasView: View {
     
     @State var width: CGFloat = 0
     @State var width1: CGFloat = 10
-    //    var totalWidth = UIScreen.main.bounds.width - 10
     
     @State var compr: Int = 0
     @State var ombro: Int = 0
@@ -187,9 +186,9 @@ struct MedidasView: View {
                 ///
                 
             }
-            .onTapGesture {
-                naoAlterado = false
-            }
+        }
+        .onTapGesture {
+            naoAlterado = false
         }
         .padding(32)
     }
