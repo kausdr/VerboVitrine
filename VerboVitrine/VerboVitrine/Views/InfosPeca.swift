@@ -34,7 +34,7 @@ struct InfosPeca: View {
     var body: some View {
         NavigationView{
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 14) {
                     
                     ///
                     
@@ -130,7 +130,7 @@ struct InfosPeca: View {
                         .foregroundStyle(.gray)
                     
                     Spacer()
-                    .frame(height: 20)
+                    .frame(height: 90)
 
                     ///
                     
@@ -147,6 +147,7 @@ struct InfosPeca: View {
                         }
                         .foregroundStyle(Color("bttnColor"))
                     }
+                    .padding(.bottom, 8)
                     
                     Rectangle()
                         .fill(Color(.systemGray))
@@ -168,7 +169,7 @@ struct InfosPeca: View {
                         }
                         .foregroundStyle(Color("bttnColor"))
                     }
-                    .padding(.bottom, 6)
+                    .padding(.bottom, 8)
                     
                     Rectangle()
                         .fill(Color(.systemGray))
