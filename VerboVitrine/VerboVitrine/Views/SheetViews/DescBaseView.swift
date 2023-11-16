@@ -18,7 +18,7 @@ struct DescBaseView: View {
                     Label("cancel", systemImage: "xmark")
                         .labelStyle(.iconOnly)
                         .foregroundStyle(Color("bttnColor"))
-                        .font(.title3)
+                        .font(.headline)
                 }
                 
                 Spacer()
@@ -35,7 +35,7 @@ struct DescBaseView: View {
                     Label("Done", systemImage: "checkmark")
                         .labelStyle(.iconOnly)
                         .foregroundStyle(Color("bttnColor"))
-                        .font(.title3)
+                        .font(.headline)
                 }
 //                .disabled(newtitle.isEmpty)
             }

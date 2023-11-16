@@ -107,6 +107,7 @@
 		5A7B3C0A2AFBCD670035B037 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30604E3A2B063FCD00AB8460 /* DescriptionView.swift */,
 				5A7B3C0B2AFBCDBE0035B037 /* ChatView.swift */,
 				5A726FB32AFE5ECE00984AB1 /* InfosPeca.swift */,
 				30604E382B03A2F400AB8460 /* DescriptionView.swift */,

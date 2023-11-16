@@ -119,12 +119,11 @@ struct InfosPeca: View {
                             .font(.body)
                             .bold()
                     }
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color("bttnColor"))
                 }
                 
                 Text(medidas != "" ? medidas : "Nenhuma medida")
                     .foregroundStyle(.gray)
-                //                .padding(.horizontal, 16)
                 
                 Spacer()
                 
@@ -141,7 +140,7 @@ struct InfosPeca: View {
                             .font(.body)
                             .bold()
                     }
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color("bttnColor"))
                 }
                 
                 Rectangle()
@@ -162,7 +161,7 @@ struct InfosPeca: View {
                             .font(.body)
                             .bold()
                     }
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color("bttnColor"))
                 }
                 
                 Rectangle()
@@ -172,9 +171,19 @@ struct InfosPeca: View {
                 ///
                 
                 HStack {
-                    Image(systemName: "trash")
-                        .bold()
-                        .foregroundStyle(Color(uiColor: .systemGray))
+                    Button {
+                    nomePeca = ""
+                    descricao = ""
+                    preco = 0.0
+                    tamanho = ""
+                    medidas = ""
+                    avarias = ""
+                    hashtag = ""
+                    } label: {
+                        Image(systemName: "trash")
+                            .bold()
+                            .foregroundStyle(Color(uiColor: .systemGray))
+                    }
                     
                     Spacer()
                     
@@ -218,5 +227,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca(nomePeca: .constant("cu"), descricao: .constant("um cu esse aqui"), preco: .constant(0.0), tamanho: .constant("redondo"), medidas: .constant("cu/cu"), avarias: .constant("nenhuma"), hashtag: .constant("#cu"))
+    InfosPeca(nomePeca: .constant(""), descricao: .constant(""), preco: .constant(0.0), tamanho: .constant(""), medidas: .constant(""), avarias: .constant(""), hashtag: .constant(""))
 }
