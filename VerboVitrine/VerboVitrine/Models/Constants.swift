@@ -8,6 +8,6 @@
 import SwiftUI
 
 enum Constants {
-//    static let openAIApiKey = "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" // ERRADA
-    static let openAIApiKey = "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--x" //tirar o " --x " para a chave funcionar
+    
+    static let openAIApiKey = "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--x"
 }

@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct DescriptionView: View {
+    @ObservedObject var viewModel = ViewModel()
     
-    @State var nomePeca: String = ""
+    @Binding var nomePeca: String
+    @Binding var descricao: String
+    @Binding var preco: Double
+    @Binding var tamanho: String
+    @Binding var medidas: String
+    @Binding var avarias: String
+    @Binding var hashtag: String
     
     var body: some View {
         
         HStack {
-            Text("**Peça:** Suéter Coreano estampado cinza claro com detalhes em bordô")
-                .frame(width: 238)
+            Text("**Peça**: \(nomePeca)")
+                .frame(width: 238, alignment: .leading)
                 .font(.title3)
             
             Spacer()
@@ -31,20 +38,66 @@ struct DescriptionView: View {
             }
             .background(Color("bttnColor"))
             .cornerRadius(14)
-            .padding()
+        }
+        .padding(.horizontal)
+        .onAppear {
+            var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
+            
+            itemStruct.peca = nomePeca
+            itemStruct.descricao = descricao
+            itemStruct.preco = preco
+            itemStruct.tamanho = tamanho
+            itemStruct.medidas = medidas
+            itemStruct.avarias = avarias
+            itemStruct.hashtags = hashtag
+            
+            
+            print(itemStruct)
+            
+            
+            
+            viewModel.sendMessage(item: itemStruct)
         }
         
         Divider()
         VStack{
+                ScrollView (.horizontal) {
+                    HStack {
+                        ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+                            if message.role == .assistant {
+                                VStack {
+                                    ScrollView{
+                                        messageView(message: message)
+                                    }
+                                }
+                                .frame(maxWidth: 327, maxHeight: 438)
+                                .font(.callout)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(.bttn, lineWidth: 1)
+                                ).padding()
+                            }
+                            
+                        }
+                        
+//                                            VStack {
+//                                                ScrollView{
+//                                                    Text("**@brecho** Suéter Coreano estampado cinza claro com detalhes em bordô Peça em acrílico, macio ao toque e em perfeito estado! Tamanho M por R$65,00 \n\nMedidas: busto: 120-140 cm \ncomprimento: 65 cm \nombro: 52 cm \nmanga: 64 cm \n\n✰Primeira pessoa a comentar quero ou mandar mensagem leva a peça.  \n\n✰Pagamentos via pix, crédito ou débito (acréscimo de taxa da maquininha para as opções no cartão) \n\n✰Envios para todo o Brasil. \n\nChama no inbox para mais informações!#brecho #brechoonline #brechovirtual #brechopr #brechocuritiba")
+//                                                }
+//                                            }
+//                                            .frame(maxWidth: 327, maxHeight: 438)
+//                                            .font(.callout)
+//                                            .padding()
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 16)
+//                                                    .stroke(.bttn, lineWidth: 1)
+//                                            ).padding()
+                        
+                    }
+                }
             
             
-            Text("**@brecho** Suéter Coreano estampado cinza claro com detalhes em bordô Peça em acrílico, macio ao toque e em perfeito estado! Tamanho M por R$65,00 \n\nMedidas: busto: 120-140 cm \ncomprimento: 65 cm \nombro: 52 cm \nmanga: 64 cm \n\n✰Primeira pessoa a comentar quero ou mandar mensagem leva a peça.  \n\n✰Pagamentos via pix, crédito ou débito (acréscimo de taxa da maquininha para as opções no cartão) \n\n✰Envios para todo o Brasil. \n\nChama no inbox para mais informações!#brecho #brechoonline #brechovirtual #brechopr #brechocuritiba")
-                .font(.callout)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(.bttn, lineWidth: 1)
-                ).padding()
             
             Button {
                 
@@ -77,11 +130,21 @@ struct DescriptionView: View {
                         .bold()
                 }
                 .padding()
-            }       
+            }
         }
     }
+    
+    
+    func messageView(message: Message) -> some View {
+        HStack {
+            Text(message.content)
+        }
+        
+    }
+    
+    
 }
 
 #Preview {
-    DescriptionView()
+    DescriptionView(nomePeca: .constant("cu"), descricao: .constant(""), preco: .constant(0.0), tamanho: .constant(""), medidas: .constant(""), avarias: .constant(""), hashtag: .constant(""))
 }
