@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30604E3B2B063FCD00AB8460 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30604E3A2B063FCD00AB8460 /* DescriptionView.swift */; };
 		5A31AE412AFE5E480065C63F /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A31AE402AFE5E480065C63F /* ItemStruct.swift */; };
 		5A468BA92AFA76B700B53B25 /* VerboVitrineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468BA82AFA76B700B53B25 /* VerboVitrineApp.swift */; };
 		5A468BAB2AFA76B700B53B25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468BAA2AFA76B700B53B25 /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30604E3A2B063FCD00AB8460 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		5A31AE402AFE5E480065C63F /* ItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
 		5A468BA52AFA76B700B53B25 /* VerboVitrine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerboVitrine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A468BA82AFA76B700B53B25 /* VerboVitrineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerboVitrineApp.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		5A7B3C0A2AFBCD670035B037 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30604E3A2B063FCD00AB8460 /* DescriptionView.swift */,
 				5A7B3C0B2AFBCDBE0035B037 /* ChatView.swift */,
 				5A726FB32AFE5ECE00984AB1 /* InfosPeca.swift */,
 				5A9A86F32B0247DF000BDF46 /* SheetViews */,
@@ -202,6 +205,7 @@
 				5A9A86F52B024807000BDF46 /* MedidasView.swift in Sources */,
 				5A7B3C0C2AFBCDBE0035B037 /* ChatView.swift in Sources */,
 				5A468BAB2AFA76B700B53B25 /* ContentView.swift in Sources */,
+				30604E3B2B063FCD00AB8460 /* DescriptionView.swift in Sources */,
 				5A9A86F72B024CDF000BDF46 /* HashtagsView.swift in Sources */,
 				5A7B3C132AFC02370035B037 /* OpenAIService.swift in Sources */,
 				5A31AE412AFE5E480065C63F /* ItemStruct.swift in Sources */,
