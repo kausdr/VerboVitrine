@@ -49,7 +49,7 @@ struct DescBaseView: View {
             ScrollView {
                 TextField("Insira a descrição da sua peça", text: $descricao, axis: .vertical)
                     .font(.callout)
-                    .padding()
+                    .padding(.horizontal)
                 
                 Rectangle()
                     .fill(Color(.systemGray))
