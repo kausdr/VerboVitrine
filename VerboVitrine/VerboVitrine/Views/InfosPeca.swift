@@ -225,7 +225,7 @@ struct InfosPeca: View {
                         .presentationCornerRadius(40)
                 }
                 .sheet(isPresented: $showSheetDescBase) {
-                    DescBaseView()
+                    DescBaseView(descricao: $descricao)
                         .presentationDetents([.medium])
                         .presentationCornerRadius(40)
                 }
