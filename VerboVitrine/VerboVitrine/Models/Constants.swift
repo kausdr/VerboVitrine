@@ -9,5 +9,5 @@ import SwiftUI
 
 enum Constants {
     
-    static let openAIApiKey = "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"
+    static let openAIApiKey = "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--x"
 }
