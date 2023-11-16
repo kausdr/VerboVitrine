@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HashtagsView: View {
+    @State var hash: String = ""
+    @Binding var hashtag: String
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
@@ -30,23 +32,31 @@ struct HashtagsView: View {
                 Spacer()
                 
                 Button {
+                    hashtag = hash
                     dismiss()
                 } label: {
                     Label("Done", systemImage: "checkmark")
                         .labelStyle(.iconOnly)
-                        .foregroundStyle(Color("bttnColor"))
+                        .foregroundStyle(hash == "" ? Color("bttnColor").opacity(0.3) : Color("bttnColor"))
                         .font(.headline)
                 }
+                .disabled(hash == "")
             }
             .padding(32)
             
             ScrollView {
-                Spacer()
-            } 
+                TextField("Hashtags...", text: $hash, axis: .vertical)
+                    .padding(.horizontal, 32)
+                
+                Rectangle()
+                    .fill(Color(.systemGray))
+                    .frame(height: 0.5)
+                    .padding(.horizontal, 24)
+            }
         }
     }
 }
 
 #Preview {
-    HashtagsView()
+    HashtagsView(hashtag: .constant(""))
 }

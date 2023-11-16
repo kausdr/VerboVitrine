@@ -217,7 +217,7 @@ struct InfosPeca: View {
                         .presentationCornerRadius(40)
                 }
                 .sheet(isPresented: $showSheetHashtag) {
-                    HashtagsView()
+                    HashtagsView(hashtag: $hashtag)
                         .presentationDetents([.medium])
                         .presentationCornerRadius(40)
                 }
