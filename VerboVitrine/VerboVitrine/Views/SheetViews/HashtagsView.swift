@@ -18,7 +18,7 @@ struct HashtagsView: View {
                     Label("cancel", systemImage: "xmark")
                         .labelStyle(.iconOnly)
                         .foregroundStyle(Color("bttnColor"))
-                        .font(.title3)
+                        .font(.headline)
                 }
                 
                 Spacer()
@@ -35,7 +35,7 @@ struct HashtagsView: View {
                     Label("Done", systemImage: "checkmark")
                         .labelStyle(.iconOnly)
                         .foregroundStyle(Color("bttnColor"))
-                        .font(.title3)
+                        .font(.headline)
                 }
 //                .disabled(newtitle.isEmpty)
             }
@@ -43,10 +43,7 @@ struct HashtagsView: View {
             
             ScrollView {
                 Spacer()
-            }
-            
-            
-            
+            } 
         }
     }
 }
