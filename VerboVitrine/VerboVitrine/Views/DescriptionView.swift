@@ -10,6 +10,7 @@ import SwiftUI
 struct DescriptionView: View {
     @ObservedObject var viewModel = ViewModel()
     
+    
     @Binding var nomePeca: String
     @Binding var descricao: String
     @Binding var preco: Double
@@ -17,6 +18,8 @@ struct DescriptionView: View {
     @Binding var medidas: String
     @Binding var avarias: String
     @Binding var hashtag: String
+    @State var ultimasMsg: [String] = []
+    @State var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
     
     var body: some View {
         
@@ -41,7 +44,6 @@ struct DescriptionView: View {
         }
         .padding(.horizontal)
         .onAppear {
-            var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
             
             itemStruct.peca = nomePeca
             itemStruct.descricao = descricao
@@ -62,23 +64,22 @@ struct DescriptionView: View {
         VStack{
                 ScrollView (.horizontal) {
                     HStack {
-                        ForEach(viewModel.messages.filter({$0.role != .system}).suffix(1), id: \.id) { message in
-                            if message.role == .assistant {
-                                VStack {
-                                    ScrollView{
-                                        messageView(message: message)
-                                    }
-                                }
-                                .frame(maxWidth: 327, maxHeight: 438)
-                                .font(.callout)
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(.bttn, lineWidth: 1)
-                                ).padding()
-                            }
+                        ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
                             
-                        }
+                                    VStack {
+                                        ScrollView{
+                                            messageView(message: message)
+                                        }
+                                    }
+                                    .frame(maxWidth: 327, maxHeight: 438)
+                                    .font(.callout)
+                                    .padding()
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(.bttn, lineWidth: 1)
+                                    ).padding()
+                                    
+                                }
                         
 //                                            VStack {
 //                                                ScrollView{
@@ -100,6 +101,9 @@ struct DescriptionView: View {
             
             Button {
                 
+                print(itemStruct)
+                
+                viewModel.sendMessage(item: itemStruct)
             } label: {
                 
                 Text("Refazer legenda")
@@ -117,7 +121,7 @@ struct DescriptionView: View {
             
             
             NavigationLink {
-                InfosPeca()
+                IntroView()
             } label: {
                 HStack {
                     Image(systemName: "plus")
