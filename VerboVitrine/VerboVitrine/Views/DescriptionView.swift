@@ -85,22 +85,26 @@ struct DescriptionView: View {
                             
                         }
                         else {
-                            ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
-                                
-                                        VStack {
-                                            ScrollView{
-                                                messageView(message: message)
+                                ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
+                                    
+
+                                    
+                                            VStack {
+                                                ScrollView{
+                                                    messageView(message: message)
+                                                }
                                             }
+                                            .frame(maxWidth: 327, maxHeight: 438)
+                                            .font(.callout)
+                                            .padding()
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .stroke(.bttn, lineWidth: 1)
+                                            ).padding()
+                                            
                                         }
-                                        .frame(maxWidth: 327, maxHeight: 438)
-                                        .font(.callout)
-                                        .padding()
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .stroke(.bttn, lineWidth: 1)
-                                        ).padding()
-                                        
-                                    }
+                            
+                            
                         }
                         
                         
@@ -125,6 +129,7 @@ struct DescriptionView: View {
             Button {
                 
                 print(itemStruct)
+                listaVazia = true
                 
                 viewModel.sendMessage(item: itemStruct)
             } label: {
