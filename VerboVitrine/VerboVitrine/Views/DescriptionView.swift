@@ -21,6 +21,8 @@ struct DescriptionView: View {
     @State var ultimasMsg: [String] = []
     @State var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
     
+    @State var listaVazia: Bool = true
+    
     var body: some View {
         
         HStack {
@@ -64,22 +66,43 @@ struct DescriptionView: View {
         VStack{
                 ScrollView (.horizontal) {
                     HStack {
-                        ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
-                            
-                                    VStack {
-                                        ScrollView{
-                                            messageView(message: message)
-                                        }
-                                    }
-                                    .frame(maxWidth: 327, maxHeight: 438)
-                                    .font(.callout)
-                                    .padding()
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(.bttn, lineWidth: 1)
-                                    ).padding()
-                                    
+                        if listaVazia {
+                            VStack {
+                                HStack {
+                                    Text("Sua legenda está sendo gerada...")
+                                        .frame(maxWidth: 700, maxHeight: 438)
+                                        .padding(.horizontal, 40)
                                 }
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: 438)
+                            .font(.callout)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.bttn, lineWidth: 1)
+                            ).padding()
+                            
+                            
+                        }
+                        else {
+                            ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
+                                
+                                        VStack {
+                                            ScrollView{
+                                                messageView(message: message)
+                                            }
+                                        }
+                                        .frame(maxWidth: 327, maxHeight: 438)
+                                        .font(.callout)
+                                        .padding()
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(.bttn, lineWidth: 1)
+                                        ).padding()
+                                        
+                                    }
+                        }
+                        
                         
 //                                            VStack {
 //                                                ScrollView{
@@ -134,6 +157,14 @@ struct DescriptionView: View {
                 }
                 .padding()
             }
+        }
+        .onChange(of: viewModel.messages) {
+            if viewModel.messages.last?.role == .assistant {
+                print("a lista mudou")
+                listaVazia = false
+            }
+            
+            
         }
     }
     

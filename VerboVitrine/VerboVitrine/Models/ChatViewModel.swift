@@ -34,7 +34,7 @@ class ViewModel: ObservableObject {
 }
 
 
- struct Message: Decodable {
+ struct Message: Decodable, Equatable {
     let id: UUID
     let role: SenderRole 
     let content: String
