@@ -10,7 +10,6 @@ import SwiftUI
 struct InfosPeca: View {
     @ObservedObject var viewModel = ViewModel()
     
-    
     @State var nomePeca: String = ""
     @State var descricao: String = ""
     @State var preco: Double = 0.0
@@ -18,6 +17,8 @@ struct InfosPeca: View {
     @State var medidas: String = ""
     @State var avarias: String = ""
     @State var hashtag: String = ""
+    
+    
     
     @State var clearFields: Bool = false
     @State var showSheetMedidas: Bool = false
@@ -32,7 +33,6 @@ struct InfosPeca: View {
     }()
     
     var body: some View {
-        NavigationView{
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
                     
@@ -231,7 +231,11 @@ struct InfosPeca: View {
                         .presentationCornerRadius(40)
                 }
             }
-        }.navigationBarBackButtonHidden()
+            .onAppear() {
+                viewModel.messages.removeAll()
+                print("removeu tudo")
+            }
+            
     }
 }
 

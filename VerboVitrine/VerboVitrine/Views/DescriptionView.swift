@@ -10,6 +10,7 @@ import SwiftUI
 struct DescriptionView: View {
     @ObservedObject var viewModel = ViewModel()
     
+    
     @Binding var nomePeca: String
     @Binding var descricao: String
     @Binding var preco: Double
@@ -17,6 +18,10 @@ struct DescriptionView: View {
     @Binding var medidas: String
     @Binding var avarias: String
     @Binding var hashtag: String
+    @State var ultimasMsg: [String] = []
+    @State var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
+    
+    @State var listaVazia: Bool = true
     
     var body: some View {
         
@@ -41,7 +46,6 @@ struct DescriptionView: View {
         }
         .padding(.horizontal)
         .onAppear {
-            var itemStruct = Item(id: UUID(), peca: "CU", descricao: "", preco: 0.0, tamanho: "", medidas: "", avarias: "", hashtags: "")
             
             itemStruct.peca = nomePeca
             itemStruct.descricao = descricao
@@ -62,23 +66,47 @@ struct DescriptionView: View {
         VStack{
                 ScrollView (.horizontal) {
                     HStack {
-                        ForEach(viewModel.messages.filter({$0.role != .system}).suffix(1), id: \.id) { message in
-                            if message.role == .assistant {
-                                VStack {
-                                    ScrollView{
-                                        messageView(message: message)
-                                    }
+                        if listaVazia {
+                            VStack {
+                                HStack {
+                                    Text("Sua legenda está sendo gerada...")
+                                        .frame(maxWidth: 700, maxHeight: 438)
+                                        .padding(.horizontal, 40)
                                 }
-                                .frame(maxWidth: 327, maxHeight: 438)
-                                .font(.callout)
-                                .padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(.bttn, lineWidth: 1)
-                                ).padding()
                             }
+                            .frame(maxWidth: .infinity, maxHeight: 438)
+                            .font(.callout)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.bttn, lineWidth: 1)
+                            ).padding()
+                            
                             
                         }
+                        else {
+                            ForEach(viewModel.messages.filter({$0.role == .assistant}).suffix(1), id: \.id) { message in
+                                    
+
+                                    
+                                            VStack {
+                                                ScrollView{
+                                                    messageView(message: message)
+                                                }
+                                            }
+                                            .frame(maxWidth: 327, maxHeight: 438)
+                                            .font(.callout)
+                                            .padding()
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .stroke(.bttn, lineWidth: 1)
+                                            ).padding()
+                                            
+                            }
+                            
+                            
+                        }
+                        
                         
 //                                            VStack {
 //                                                ScrollView{
@@ -100,6 +128,10 @@ struct DescriptionView: View {
             
             Button {
                 
+                print(itemStruct)
+                listaVazia = true
+                
+                viewModel.sendMessage(item: itemStruct)
             } label: {
                 
                 Text("Refazer legenda")
@@ -117,7 +149,7 @@ struct DescriptionView: View {
             
             
             NavigationLink {
-                InfosPeca()
+                IntroView()
             } label: {
                 HStack {
                     Image(systemName: "plus")
@@ -130,6 +162,14 @@ struct DescriptionView: View {
                 }
                 .padding()
             }
+        }
+        .onChange(of: viewModel.messages) {
+            if viewModel.messages.last?.role == .assistant {
+                print("a lista mudou")
+                listaVazia = false
+            }
+            
+            
         }
     }
     
