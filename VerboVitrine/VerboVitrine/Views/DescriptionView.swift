@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct DescriptionView: View {
     @ObservedObject var viewModel = ViewModel()
@@ -23,6 +24,7 @@ struct DescriptionView: View {
     
     @State var listaVazia: Bool = true
     
+    
     var body: some View {
         
         HStack {
@@ -33,7 +35,13 @@ struct DescriptionView: View {
             Spacer()
             
             Button{
+                UIPasteboard.general.string = viewModel.messages.filter({$0.role == .assistant}).suffix(1).last?.content; 
                 
+                if let pastedText = UIPasteboard.general.string {
+                   print("Pasted text: deu certo")
+                }
+                
+
             } label: {
                 
                 Image(systemName: "doc.on.doc")
@@ -86,8 +94,6 @@ struct DescriptionView: View {
                         }
                         else {
                             ForEach(viewModel.messages.filter({$0.role == .assistant}).suffix(1), id: \.id) { message in
-                                    
-
                                     
                                             VStack {
                                                 ScrollView{
