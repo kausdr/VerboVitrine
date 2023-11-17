@@ -91,6 +91,8 @@ Peça:  \(peca ?? "")
 Diga para o leitor que esses são os métodos de pagamento: pix, crédito, débito (acréscimo de taxa da maquininha para as opções no cartão)
 
 Envio: para todo o Brasil.
+
+\(hashtags == "" ? "" : "adicione ao final da legenda: \(hashtags ?? "")")
  
 """
         
