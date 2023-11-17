@@ -22,7 +22,7 @@ struct IntroView: View {
         VStack {
             Spacer()
             
-            Image("LogoLight")
+            Image("LogoDark")
                 .resizable()
                 .frame(width: 55, height: 25)
             
