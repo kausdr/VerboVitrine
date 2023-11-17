@@ -1,13 +1,13 @@
 //
-//  InfosPeca.swift
+//  InfosPecaCima.swift
 //  VerboVitrine
 //
-//  Created by Kauane Santana on 10/11/23.
+//  Created by Isabela Bastos Jastrombek on 17/11/23.
 //
 
 import SwiftUI
 
-struct InfosPeca: View {
+struct InfosPecaCima: View {
     @ObservedObject var viewModel = ViewModel()
     
     @State var nomePeca: String = ""
@@ -24,14 +24,14 @@ struct InfosPeca: View {
     @State var showSheetHashtag: Bool = false
     @State var showSheetDescBase: Bool = false
     
-    @Binding var medidaType: String
-    
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
         formatter.zeroSymbol  = ""
         return formatter
     }()
+    
+    @State var medidaType = "cima"
     
     var body: some View {
             ScrollView {
@@ -218,7 +218,7 @@ struct InfosPeca: View {
                 .padding(24)
                 .sheet(isPresented: $showSheetMedidas) {
                     MedidasView(medidas: $medidas, medidaType: $medidaType)
-                        .presentationDetents([.height(560)])
+                        .presentationDetents([.height(400)])
                         .presentationCornerRadius(40)
                 }
                 .sheet(isPresented: $showSheetHashtag) {
@@ -241,5 +241,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca(medidaType: .constant("todos"))
+    InfosPecaCima()
 }

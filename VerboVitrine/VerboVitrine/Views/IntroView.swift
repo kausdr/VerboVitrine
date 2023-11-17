@@ -16,7 +16,7 @@ struct IntroView: View {
     //    @Binding var medidas: String
     //    @Binding var avarias: String
     //    @Binding var hashtag: String
-    @State var medidaType: String = "todos"
+
     
     var body: some View {
         VStack {
@@ -31,7 +31,7 @@ struct IntroView: View {
             VStack {
                 
                 NavigationLink() {
-                    InfosPeca(medidaType: $medidaType)
+                    InfosPeca2()
                 } label: {
                     HStack(spacing: 14) {
                         Rectangle()
@@ -71,14 +71,11 @@ struct IntroView: View {
                             .stroke(Color("bttnColor"), lineWidth: 1)
                     )
                 }
-                .onAppear() {
-                    medidaType = "acessorios"
-                }
                 
                 ///
                 
                 NavigationLink {
-                    InfosPeca(medidaType: $medidaType)
+                    InfosPecaCima()
                 } label: {
                     HStack(spacing: 14) {
                         Rectangle()
@@ -118,103 +115,93 @@ struct IntroView: View {
                             .stroke(Color("bttnColor"), lineWidth: 1)
                     )
                 }
-                .onAppear() {
-                    medidaType = "cima"
-                }
-                ///
-                
-                Button {
-                    medidaType = "baixo"
-                } label: {
-                    NavigationLink {
-                        InfosPeca(medidaType: $medidaType)
-                    } label: {
-                        HStack(spacing: 14) {
-                            Rectangle()
-                                .fill(Color(uiColor: .clear))
-                                .frame(width: 20, height: 20)
-                                .overlay {
-                                    Image("pants")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                }
-                            
-                            VStack {
-                                VStack(alignment: .leading) {
-                                    Text("Descrever peças de baixo")
-                                        .fontWeight(.semibold)
-                                        .multilineTextAlignment(.leading)
-                                        .font(.footnote)
-                                    
-                                    Text("incluindo cintura, comprimento e dimensões")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.caption)
-                                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundColor(Color(uiColor: .clear))
-                                        .font(.caption)
-                                        .frame(height: 0)
-                                    
-                                }
-                                .frame(minWidth: 290)
-                                
-                            }
-                        }
-                        .padding(20)
-                        
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color("bttnColor"), lineWidth: 1)
-                        )
-                    }
-                }
                 
                 ///
                 
-                Button {
-                    medidaType = "calçado"
+
+                NavigationLink {
+                        InfosPecaBaixo()
                 } label: {
-                    NavigationLink {
-                        InfosPeca(medidaType: $medidaType)
-                    } label: {
-                        HStack(spacing: 14) {
-                            Rectangle()
-                                .fill(Color(uiColor: .clear))
-                                .frame(width: 20, height: 20)
-                                .overlay {
-                                    Image("shoes")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                }
-                            
-                            VStack {
-                                VStack(alignment: .leading) {
-                                    Text("Descrever calçados")
-                                        .fontWeight(.semibold)
-                                        .multilineTextAlignment(.leading)
-                                        .font(.footnote)
-                                    
-                                    Text("com busto, manga, tamanho e dimensões")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.caption)
-                                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundColor(Color(uiColor: .clear))
-                                        .font(.caption)
-                                        .frame(height: 0)
-                                    
-                                }
-                                .frame(minWidth: 290)
+                    HStack(spacing: 14) {
+                        Rectangle()
+                            .fill(Color(uiColor: .clear))
+                            .frame(width: 20, height: 20)
+                            .overlay {
+                                Image("pants")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                            }
+                        
+                        VStack {
+                            VStack(alignment: .leading) {
+                                Text("Descrever peças de baixo")
+                                    .fontWeight(.semibold)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.footnote)
+                                
+                                Text("incluindo cintura, comprimento e dimensões")
+                                    .multilineTextAlignment(.leading)
+                                    .font(.caption)
+                                Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(Color(uiColor: .clear))
+                                    .font(.caption)
+                                    .frame(height: 0)
                                 
                             }
+                            .frame(minWidth: 290)
+                            
                         }
-                        .padding(20)
-                        
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color("bttnColor"), lineWidth: 1)
-                        )
                     }
+                    .padding(20)
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color("bttnColor"), lineWidth: 1)
+                    )
+                }
+                ///
+                
+                NavigationLink {
+                        InfosPeca2()
+                } label: {
+                    HStack(spacing: 14) {
+                        Rectangle()
+                            .fill(Color(uiColor: .clear))
+                            .frame(width: 20, height: 20)
+                            .overlay {
+                                Image("shoes")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                            }
+                        
+                        VStack {
+                            VStack(alignment: .leading) {
+                                Text("Descrever calçados")
+                                    .fontWeight(.semibold)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.footnote)
+                                
+                                Text("com busto, manga, tamanho e dimensões")
+                                    .multilineTextAlignment(.leading)
+                                    .font(.caption)
+                                Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(Color(uiColor: .clear))
+                                    .font(.caption)
+                                    .frame(height: 0)
+                                
+                            }
+                            .frame(minWidth: 290)
+                            
+                        }
+                    }
+                    .padding(20)
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color("bttnColor"), lineWidth: 1)
+                    )
                 }
             }
             .foregroundStyle(Color("bttnColor"))
@@ -226,25 +213,21 @@ struct IntroView: View {
                 .frame(height: 0.5)
                 .padding(.vertical)
             
-            Button {
-                medidaType = "todos"
+            NavigationLink {
+                InfosPeca1()
             } label: {
-                NavigationLink {
-                    InfosPeca(medidaType: $medidaType)
-                } label: {
-                    HStack {
-                        Image(systemName: "plus")
-                            .foregroundStyle(Color(.systemGray))
-                            .bold()
-                        
-                        Text("Descrever do meu jeito")
-                            .foregroundStyle(Color(.systemGray))
-                            .bold()
-                    }
-                    .padding(.bottom)
+                HStack {
+                    Image(systemName: "plus")
+                        .foregroundStyle(Color(.systemGray))
+                        .bold()
+                    
+                    Text("Descrever do meu jeito")
+                        .foregroundStyle(Color(.systemGray))
+                        .bold()
                 }
-                .frame(maxWidth: .infinity)
+                .padding(.bottom)
             }
+            .frame(maxWidth: .infinity)
             
         }
         .padding(.horizontal, 20)
