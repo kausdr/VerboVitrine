@@ -25,7 +25,7 @@ struct MedidasView: View {
     @State var compr: Int = 0
     @State var ombro: Int = 0
     @State var comprManga: Int = 0
-    @State var corte: Int = 0
+    @State var corte: String = ""
     
     
     @Binding var medidas: String
@@ -60,12 +60,16 @@ struct MedidasView: View {
                 Spacer()
                 
                 Button {
+                    let r = corte != "" ? "Comprimento: \(corte)," : ""
                     let b = getValue(val: bustoMin) != "0" ? "Busto: \(getValue(val: bustoMin)) até \(getValue(val: bustoMax))cm," : ""
                     let c = compr != 0 ? "Comprimento: \(compr)cm," : ""
                     let o = ombro != 0 ? "Ombro: \(ombro)cm," : ""
                     let m = comprManga != 0 ? "Comprimento da Manga: \(comprManga)cm" : ""
+                    let g = getValue(val: ganchoMin) != "0" ? "Gancho: \(getValue(val: ganchoMin)) até \(getValue(val: bustoMax))cm," : ""
+                    let q = getValue(val: quadrilMin) != "0" ? "Quadril: \(getValue(val: quadrilMin)) até \(getValue(val: quadrilMax))cm," : ""
+                    let t = getValue(val: cinturaMin) != "0" ? "Cintura: \(getValue(val: cinturaMin)) até \(getValue(val: cinturaMax))cm," : ""
                     
-                    medidas = "Medidas: \(b) \(c) \(o) \(m)"
+                    medidas = "Medidas: \(r)\(b)\(c)\(o)\(m)\(g)\(q)\(t)"
                     print(medidas)
                     
                     dismiss()
@@ -89,7 +93,7 @@ struct MedidasView: View {
                             .font(.body)
                             .bold()
                         
-                        TextField("Insira", value: $corte, formatter: numberFormatter)
+                        TextField("Insira", text: $corte)
                             .keyboardType(.numbersAndPunctuation)
                             .padding(.horizontal, 16)
                         

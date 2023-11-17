@@ -217,17 +217,17 @@ struct InfosPeca: View {
                 .padding(24)
                 .sheet(isPresented: $showSheetMedidas) {
                     MedidasView(medidas: $medidas)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.height(560)])
                         .presentationCornerRadius(40)
                 }
                 .sheet(isPresented: $showSheetHashtag) {
                     HashtagsView(hashtag: $hashtag)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.height(250)])
                         .presentationCornerRadius(40)
                 }
                 .sheet(isPresented: $showSheetDescBase) {
                     DescBaseView(descricao: $descricao)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.height(350)])
                         .presentationCornerRadius(40)
                 }
             }
