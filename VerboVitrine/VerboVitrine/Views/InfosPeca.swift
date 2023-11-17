@@ -24,6 +24,8 @@ struct InfosPeca: View {
     @State var showSheetHashtag: Bool = false
     @State var showSheetDescBase: Bool = false
     
+    @Binding var medidaType: String
+    
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
@@ -215,7 +217,7 @@ struct InfosPeca: View {
                 }
                 .padding(24)
                 .sheet(isPresented: $showSheetMedidas) {
-                    MedidasView(medidas: $medidas)
+                    MedidasView(medidas: $medidas, medidaType: $medidaType)
                         .presentationDetents([.height(560)])
                         .presentationCornerRadius(40)
                 }
@@ -239,5 +241,5 @@ struct InfosPeca: View {
 }
 
 #Preview {
-    InfosPeca()
+    InfosPeca(medidaType: .constant("todos"))
 }
