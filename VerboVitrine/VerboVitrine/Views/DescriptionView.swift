@@ -132,24 +132,24 @@ struct DescriptionView: View {
             
             
             
-            Button {
-                
-                print(itemStruct)
-                listaVazia = true
-                
-                viewModel.sendMessage(item: itemStruct)
-            } label: {
-                
-                Text("Refazer legenda")
-                    .foregroundStyle(.bttn)
-                    .bold()
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(.bttn, lineWidth: 1)
-                    ).padding()
-            }
+//            Button {
+//                
+//                print(itemStruct)
+//                listaVazia = true
+//                
+//                viewModel.sendMessage(item: itemStruct)
+//            } label: {
+//                
+//                Text("Refazer legenda")
+//                    .foregroundStyle(.bttn)
+//                    .bold()
+//                    .padding()
+//                    .frame(maxWidth: .infinity)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 16)
+//                            .stroke(.bttn, lineWidth: 1)
+//                    ).padding()
+//            }
             
             Divider()
             
