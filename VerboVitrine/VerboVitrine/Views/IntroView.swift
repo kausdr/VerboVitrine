@@ -9,45 +9,191 @@ import SwiftUI
 
 struct IntroView: View {
     
-//    @Binding var nomePeca: String
-//    @Binding var descricao: String
-//    @Binding var preco: Double
-//    @Binding var tamanho: String
-//    @Binding var medidas: String
-//    @Binding var avarias: String
-//    @Binding var hashtag: String
-    
+    //    @Binding var nomePeca: String
+    //    @Binding var descricao: String
+    //    @Binding var preco: Double
+    //    @Binding var tamanho: String
+    //    @Binding var medidas: String
+    //    @Binding var avarias: String
+    //    @Binding var hashtag: String
+    @State var medidaType: String = "meujeito"
     
     var body: some View {
         VStack {
-            Spacer()
             
             Image("LogoDark")
                 .resizable()
                 .frame(width: 55, height: 25)
+                .padding(.top, 88)
             
             Spacer()
-                .frame(height: 221)
             
-            VStack (spacing: 11) {
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(height: 92)
+            VStack {
+                HStack(spacing: 14) {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 20, height: 20)
+                        .overlay {
+                            Image("sunglasses")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                    
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Gerar descrição para acessórios")
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .font(.footnote)
+                            
+                            Text("com infos sobre o formato, cor, material e dimensões")
+                                .multilineTextAlignment(.leading)
+                                .font(.caption)
+                            Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color(uiColor: .clear))
+                                .font(.caption)
+                                .frame(height: 0)
+                            
+                        }
+                        .frame(minWidth: 290)
+                        
+                    }
+                }
+                .padding(20)
                 
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(height: 92)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.black, lineWidth: 1)
+                )
                 
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(height: 92)
+                ///
+                
+                HStack(spacing: 14) {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 20, height: 20)
+                        .overlay {
+                            Image("shirt")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                    
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Descrever peças de cima")
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .font(.footnote)
+                            
+                            Text("descrevendo botões ou tecidos diferenciados")
+                                .multilineTextAlignment(.leading)
+                                .font(.caption)
+                            Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color(uiColor: .clear))
+                                .font(.caption)
+                                .frame(height: 0)
+                            
+                        }
+                        .frame(minWidth: 290)
+                        
+                    }
+                }
+                .padding(20)
+                
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.black, lineWidth: 1)
+                )
+                
+                ///
+                
+                HStack(spacing: 14) {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 20, height: 20)
+                        .overlay {
+                            Image("pants")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                    
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Descrever peças de baixo")
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .font(.footnote)
+                            
+                            Text("incluindo cintura, comprimento e dimensões")
+                                .multilineTextAlignment(.leading)
+                                .font(.caption)
+                            Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color(uiColor: .clear))
+                                .font(.caption)
+                                .frame(height: 0)
+                            
+                        }
+                        .frame(minWidth: 290)
+                        
+                    }
+                }
+                .padding(20)
+                
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.black, lineWidth: 1)
+                )
+                
+                ///
+                
+                HStack(spacing: 14) {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 20, height: 20)
+                        .overlay {
+                            Image("shoes")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                    
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Descrever calçados")
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .font(.footnote)
+                            
+                            Text("com busto, manga, tamanho e dimensões")
+                                .multilineTextAlignment(.leading)
+                                .font(.caption)
+                            Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color(uiColor: .clear))
+                                .font(.caption)
+                                .frame(height: 0)
+                            
+                        }
+                        .frame(minWidth: 290)
+                        
+                    }
+                }
+                .padding(20)
+                
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.black, lineWidth: 1)
+                )
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 18)
+            
             
             Rectangle()
                 .fill(Color(.systemGray))
                 .frame(height: 0.5)
-                .padding()
+                .padding(.vertical)
             
             NavigationLink {
                 InfosPeca()
@@ -61,13 +207,14 @@ struct IntroView: View {
                         .foregroundStyle(Color(.systemGray))
                         .bold()
                 }
-                .padding()
+                .padding(.bottom)
             }
             .frame(maxWidth: .infinity)
-        
-    }
-        .navigationBarBackButtonHidden()
+            
         }
+        .padding(.horizontal, 20)
+        .navigationBarBackButtonHidden()
+    }
 }
 
 #Preview {

@@ -19,7 +19,6 @@ struct InfosPeca: View {
     @State var hashtag: String = ""
     
     
-    
     @State var clearFields: Bool = false
     @State var showSheetMedidas: Bool = false
     @State var showSheetHashtag: Bool = false
