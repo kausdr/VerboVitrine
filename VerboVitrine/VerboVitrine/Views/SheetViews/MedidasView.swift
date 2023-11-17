@@ -10,12 +10,13 @@ import SwiftUI
 struct MedidasView: View {
     @Environment(\.dismiss) var dismiss
     
-    @State var width: CGFloat = 0
-    @State var width1: CGFloat = 10
+    @State var bustoMin: CGFloat = 0
+    @State var bustoMax: CGFloat = 10
     
     @State var compr: Int = 0
     @State var ombro: Int = 0
     @State var comprManga: Int = 0
+    
     
     @Binding var medidas: String
     
@@ -49,7 +50,7 @@ struct MedidasView: View {
                 Spacer()
                 
                 Button {
-                    let b = getValue(val: width) != "0" ? "Busto: \(getValue(val: width)) até \(getValue(val: width1))cm," : ""
+                    let b = getValue(val: bustoMin) != "0" ? "Busto: \(getValue(val: bustoMin)) até \(getValue(val: bustoMax))cm," : ""
                     let c = compr != 0 ? "Comprimento: \(compr)cm," : ""
                     let o = ombro != 0 ? "Ombro: \(ombro)cm," : ""
                     let m = comprManga != 0 ? "Comprimento da Manga: \(comprManga)cm" : ""
@@ -77,7 +78,7 @@ struct MedidasView: View {
                     
                     
                     HStack {
-                        Text("\(getValue(val: width))")
+                        Text("\(getValue(val: bustoMin))")
                             .foregroundStyle(Color("bttnColor").opacity(0.5))
                             .frame(width: 34)
                         
@@ -88,20 +89,20 @@ struct MedidasView: View {
                             
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(.blue)
-                                .frame(width: self.width1 - self.width ,height: 4)
-                                .offset(x: self.width + 28)
+                                .frame(width: self.bustoMax - self.bustoMin ,height: 4)
+                                .offset(x: self.bustoMin + 28)
                             
                             HStack(spacing: 0) {
                                 Circle()
                                     .fill(.white)
                                     .frame(width: 28, height: 28)
                                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 0.5)
-                                    .offset(x: self.width)
+                                    .offset(x: self.bustoMin)
                                     .gesture(
                                         DragGesture()
                                             .onChanged({ (value) in
-                                                if value.location.x >= 0 && value.location.x <= self.width1 {
-                                                    self.width = value.location.x
+                                                if value.location.x >= 0 && value.location.x <= self.bustoMax {
+                                                    self.bustoMin = value.location.x
                                                 }
                                             })
                                     )
@@ -110,12 +111,12 @@ struct MedidasView: View {
                                     .fill(.white)
                                     .frame(width: 28, height: 28)
                                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 0.5)
-                                    .offset(x: self.width1)
+                                    .offset(x: self.bustoMax)
                                     .gesture(
                                         DragGesture()
                                             .onChanged({ (value) in
-                                                if value.location.x >= self.width && value.location.x <= 210 {
-                                                    self.width1 = value.location.x
+                                                if value.location.x >= self.bustoMin && value.location.x <= 210 {
+                                                    self.bustoMax = value.location.x
                                                 }
                                                 
                                             })
@@ -124,7 +125,7 @@ struct MedidasView: View {
                             
                         }
                         
-                        Text("\(getValue(val: width1))")
+                        Text("\(getValue(val: bustoMax))")
                             .foregroundStyle(Color("bttnColor").opacity(0.5))
                             .frame(width: 34)
                     }
