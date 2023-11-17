@@ -85,7 +85,7 @@ struct DescriptionView: View {
                             
                         }
                         else {
-                                ForEach(viewModel.messages.filter({$0.role == .assistant}), id: \.id) { message in
+                            ForEach(viewModel.messages.filter({$0.role == .assistant}).suffix(1), id: \.id) { message in
                                     
 
                                     
@@ -102,7 +102,7 @@ struct DescriptionView: View {
                                                     .stroke(.bttn, lineWidth: 1)
                                             ).padding()
                                             
-                                        }
+                            }
                             
                             
                         }
