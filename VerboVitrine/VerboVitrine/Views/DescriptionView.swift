@@ -82,7 +82,7 @@ struct DescriptionView: View {
                                         .padding(.horizontal, 40)
                                 }
                             }
-                            .frame(maxWidth: .infinity, maxHeight: 438)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .font(.callout)
                             .padding()
                             .overlay(
@@ -100,7 +100,7 @@ struct DescriptionView: View {
                                                     messageView(message: message)
                                                 }
                                             }
-                                            .frame(maxWidth: 327, maxHeight: 438)
+                                            .frame(maxWidth: 327, maxHeight: .infinity)
                                             .font(.callout)
                                             .padding()
                                             .overlay(
@@ -114,18 +114,6 @@ struct DescriptionView: View {
                         }
                         
                         
-//                                            VStack {
-//                                                ScrollView{
-//                                                    Text("**@brecho** Suéter Coreano estampado cinza claro com detalhes em bordô Peça em acrílico, macio ao toque e em perfeito estado! Tamanho M por R$65,00 \n\nMedidas: busto: 120-140 cm \ncomprimento: 65 cm \nombro: 52 cm \nmanga: 64 cm \n\n✰Primeira pessoa a comentar quero ou mandar mensagem leva a peça.  \n\n✰Pagamentos via pix, crédito ou débito (acréscimo de taxa da maquininha para as opções no cartão) \n\n✰Envios para todo o Brasil. \n\nChama no inbox para mais informações!#brecho #brechoonline #brechovirtual #brechopr #brechocuritiba")
-//                                                }
-//                                            }
-//                                            .frame(maxWidth: 327, maxHeight: 438)
-//                                            .font(.callout)
-//                                            .padding()
-//                                            .overlay(
-//                                                RoundedRectangle(cornerRadius: 16)
-//                                                    .stroke(.bttn, lineWidth: 1)
-//                                            ).padding()
                         
                     }
                 }
