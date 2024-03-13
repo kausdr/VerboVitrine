@@ -1,14 +1,14 @@
 
 ![image 1](https://github.com/kausdr/VerboVitrine/assets/86927114/344bf9f8-43f6-4c31-85e1-6c3b74d93904)
 
-<h1>Bem-vindo ao VerboVitrine</h1>
-<p>Uma ferramenta que gera legendas personalizadas para donos de brechós independentes.</p>
+<h1>Welcome To VerboVitrine</h1>
+<p>A tool that generates personalized captions for independent thrift store owners.</p>
 
 ![image 2](https://github.com/kausdr/VerboVitrine/assets/86927114/8af220f3-a656-4505-96f5-ef578b25fe59)
 
-<p>Nosso app permite que você possa preencher um breve formulário com somente as medidas que importam, além de cadastrar hashtags e partes que sempre repetem em descrições de brechós.</p>
+<p>Our app allows you to fill in a short form with only the measurements that matter, as well as enter hashtags and parts that are always repeated in thrift store descriptions.</p>
 
-<h2>Tecnologias</h2>
+<h2>Technologies</h2>
 <ul>
   <li>API ChatGPT</li>
    <li>SwiftUI</li>
