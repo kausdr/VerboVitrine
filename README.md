@@ -8,7 +8,14 @@
 
 <p>Nosso app permite que você possa preencher um breve formulário com somente as medidas que importam, além de cadastrar hashtags e partes que sempre repetem em descrições de brechós.</p>
 
+<h2>Tecnologias</h2>
+<ul>
+  <li>API ChatGPT</li>
+   <li>SwiftUI</li>
+</ul>
+
 <div align="center">
   <img src="https://github.com/kausdr/VerboVitrine/assets/86927114/c71ff6bc-4c6d-456c-a641-bfc96e3f2abd" alt="logo">
 </div>
+
 
